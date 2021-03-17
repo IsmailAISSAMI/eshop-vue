@@ -1,16 +1,15 @@
 <template>
     <div>
-        <TitlePage title="Mon compte"/>
         <div v-if="isLogged">
-            <div class="user__info" v-if="user">
-                <p>Nom :{{user.firstName}}</p>
-                <p>Prénom :{{user.lastName}}</p>
-                <p>Email :{{user.email}}</p>
-                <button @click="logout">Se déconnecter</button>
+            <div v-if="user.isAdmin">
+                <Alert className="alert__success" errorMessage="je suis admin!"/>
+            </div>
+            <div v-else>
+                <Alert className="alert__danger" errorMessage="je suis pas admin!"/>
             </div>
         </div>
         <div v-else>
-            <p>Vous n'êtes pas connecté</p>
+            <Alert className="alert__danger" errorMessage="You are not connected!"/>
         </div>
     </div>
 </template>
@@ -19,10 +18,13 @@
 
 import VueJwtDecode from "vue-jwt-decode";
 import TitlePage from "../components/TitlePage";
+import Alert from "../components/Alert";
+
 
     export default {
         components: {
-            TitlePage
+            TitlePage,
+            Alert
         },
         data: function() {
             return {
@@ -40,7 +42,7 @@ import TitlePage from "../components/TitlePage";
             const token = localStorage.getItem('token');
             if(token) {
                const decodedToken = VueJwtDecode.decode(token);
-               fetch(`http://localhost:3030/api/v1/users/${decodedToken.id}`, {
+               fetch(`http://localhost:3080/api/v1/users/${decodedToken.id}`, {
                    headers: {
                        Authorization: token
                    }
@@ -48,7 +50,7 @@ import TitlePage from "../components/TitlePage";
                .then(res => res.json())
                .then(data=>{
                    this.isLogged = true;
-                   this.user = data;
+                   this.user = data.user;
                })
                .catch(err => console.log(err))
             }

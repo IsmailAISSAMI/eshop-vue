@@ -6,6 +6,8 @@ import Shop from '../views/Shop.vue';
 import User from '../views/User.vue';
 import Product from "../views/Product.vue";
 import Login from "../views/Login.vue";
+import Policy from "../views/Policy.vue";
+
 
 Vue.use(VueRouter)
 
@@ -39,6 +41,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/policy',
+    name: 'policy',
+    component: Policy
   },
   {
     path: '/about',
