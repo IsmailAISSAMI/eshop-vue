@@ -2,7 +2,7 @@
     <div>
         <div v-if="isLogged">
             <div v-if="user.isAdmin">
-                <Alert className="alert__success" errorMessage="je suis admin!"/>
+                <UserLambda :user="user" />
             </div>
             <div v-else>
                 <Alert className="alert__danger" errorMessage="je suis pas admin!"/>
@@ -19,12 +19,14 @@
 import VueJwtDecode from "vue-jwt-decode";
 import TitlePage from "../components/TitlePage";
 import Alert from "../components/Alert";
+import UserLambda from '../layout/user/UserLambda.vue';
 
 
     export default {
         components: {
             TitlePage,
-            Alert
+            Alert,
+            UserLambda
         },
         data: function() {
             return {
