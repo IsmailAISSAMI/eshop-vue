@@ -2,7 +2,7 @@
     <div class="user__lambda__main">
         <div class="wrapper user__lambda__sidbar">
              <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
+                <p>Welcome {{user.firstName}}</p>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -72,21 +72,27 @@
 </script>
 
 <style lang="scss" scoped>
-
+    $background-main-color:#2f3f53;
+    $secondary-color: #475e7a;
+    $link-color: #fff;
     .user__lambda__main{
         width: 100vw;        
         display: flex;
         flex-direction: row;
         .user__lambda__sidbar{
-            background-color: #2f3f53;
+            background-color: $background-main-color;
+            padding: 0 20px;
 
             p {
                 font-family: 'Poppins', sans-serif;
+                text-align: center;
                 font-size: 1.1em;
-                font-weight: 300;
+                font-weight: 600;
                 line-height: 1.7em;
-                color: #999;
+                color: $link-color;
+                border-bottom: 1px solid #fff;
             }
+
 
             a, a:hover, a:focus {
                 color: inherit;
@@ -94,51 +100,43 @@
                 transition: all 0.3s;
             }
 
-            #sidebar {
-                /* don't forget to add all the previously mentioned styles here too */
-                background: #7386D5;
-                color: #fff;
-                transition: all 0.3s;
+
+            ul.components {
+                border-bottom: 1px solid #fff;
             }
 
-            #sidebar .sidebar-header {
-                padding: 20px;
-                background: #6d7fcc;
-            }
-
-            #sidebar ul.components {
-                padding: 20px 0;
-                border-bottom: 1px solid #47748b;
-            }
-
-            #sidebar ul p {
+            ul p {
                 color: #fff;
                 padding: 10px;
             }
 
-            #sidebar ul li a {
+            ul li a {
                 padding: 10px;
                 font-size: 1.1em;
                 display: block;
+                color: $link-color;
             }
-            #sidebar ul li a:hover {
+            ul li a:hover {
                 color: #7386D5;
                 background: #fff;
             }
 
-            #sidebar ul li.active > a, a[aria-expanded="true"] {
+            ul li.active > a, a[aria-expanded="true"] {
                 color: #fff;
-                background: #6d7fcc;
+                background: $secondary-color;
             }
             ul ul a {
                 font-size: 0.9em !important;
                 padding-left: 30px !important;
-                background: #6d7fcc;
+                background: $secondary-color;
             }
         }
 
         .user__lambda__content{
-            margin-left: 5vw;
+            width: 98%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     
     }
