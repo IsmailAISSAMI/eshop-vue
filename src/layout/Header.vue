@@ -10,6 +10,9 @@
             <router-link class="nav__link" to="/contact">Contact</router-link>
             <router-link class="nav__link" to="/account">Account</router-link>
             <router-link class="nav__link" to="/login">Login</router-link>
+            <router-link class="nav__link" to="/cart">
+                <i class="fas fa-shopping-cart icon__color"></i>
+            </router-link>
         </div>
     </header>
 </template>
@@ -54,6 +57,11 @@
             .nav__link:hover {
                 border: 1px solid #fff;
                 border-radius: .25rem; 
+            }
+
+            .icon__color{
+                color:#f0c14b !important;
+                font-size: 20px;
             }
         }   
     }

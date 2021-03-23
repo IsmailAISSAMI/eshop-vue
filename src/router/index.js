@@ -2,11 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Contact from '../views/Contact.vue';
+import Policy from "../views/Policy.vue";
+
 import Shop from '../views/Shop.vue';
 import User from '../views/User.vue';
 import Product from "../views/Product.vue";
+import Cart from "../views/Cart.vue";
+
 import Login from "../views/Login.vue";
-import Policy from "../views/Policy.vue";
 
 
 Vue.use(VueRouter)
@@ -26,6 +29,11 @@ const routes = [
     path: "/product/:id",
     name: "Product",
     component: Product
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   },
   {
     path: '/shop',

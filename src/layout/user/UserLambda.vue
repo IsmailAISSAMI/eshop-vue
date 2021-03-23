@@ -2,48 +2,91 @@
     <div class="user__lambda__main">
         <div class="wrapper user__lambda__sidbar">
              <ul class="list-unstyled components">
-                <p>Welcome {{user.firstName}}</p>
+                <p>
+                    Welcome {{user.firstName}}
+                </p>
+                
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i>
+                        Users
+                    </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Home 1</a>
+                            <a href="#">
+                                <i class="fas fa-angle-double-right"></i>
+                                List
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="#">
+                                <i class="fas fa-pen-alt"></i>
+                                Update
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                            <a href="#">
+                                <i class="fas fa-plus-circle"></i>
+                                Create
+                            </a>
                         </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </a>
+                        </li>
+                        
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-shopping-cart"></i>
+                        Products
+                    </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#">
+                                <i class="fas fa-angle-double-right"></i>
+                                List
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="#">
+                                <i class="fas fa-pen-alt"></i>
+                                Update
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Page 3</a>
+                            <a href="#">
+                                <i class="fas fa-plus-circle"></i>
+                                Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </a> 
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-trash-alt"></i>
+                                Delete
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="#">Link1</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Link2</a>
                 </li>
             </ul>
         </div>
         <div class="user__lambda__content">
-            <Alert className="alert__success" errorMessage="je suis admin!"/>
+            <Alert className="alert__success" errorMessage="I am an admin!!"/>
         </div>
         <!-- <div class="user__info">
                 <p>Nom :{{user.firstName}}</p>
