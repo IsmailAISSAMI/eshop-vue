@@ -1,16 +1,22 @@
 <template>
     <div>
-        <div v-if="isLogged">
-            <div v-if="user.isAdmin">
-                <UserLambda :user="user" />
-            </div>
-            <div v-else>
-                <Alert className="alert__danger" errorMessage="je suis pas admin!"/>
-            </div>
+        <div v-if="loading">
+            <p>loading page</p>
         </div>
         <div v-else>
-            <Alert className="alert__danger" errorMessage="You are not connected!"/>
+            <div v-if="isLogged">
+                <div v-if="user.isAdmin">
+                    <UserLambda :user="user" />
+                </div>
+                <div v-else>
+                    <Alert className="alert__danger" errorMessage="je suis pas admin!"/>
+                </div>
+            </div>
+            <div v-else>
+                <Alert className="alert__danger" errorMessage="You are not connected!"/>
+            </div>
         </div>
+        
     </div>
 </template>
 
@@ -31,7 +37,8 @@ import UserLambda from '../layout/user/UserLambda.vue';
         data: function() {
             return {
                 user:{},
-                isLogged:false
+                isLogged:false,
+                loading: true
             }
         },
         methods: {
@@ -51,8 +58,9 @@ import UserLambda from '../layout/user/UserLambda.vue';
                })
                .then(res => res.json())
                .then(data=>{
-                   this.isLogged = true;
                    this.user = data.user;
+                   this.isLogged = true;
+                   this.loading = false;
                })
                .catch(err => console.log(err))
             }

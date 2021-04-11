@@ -36,12 +36,17 @@
             Total price: {{calcTotal | formatPriceDecimal | formatPrice}}
         </div>
         <button @click="clearShopCart">Remove basket</button>
+        <button @click="checkout">payement</button>
     </div>
 </template>
 
 <script>
 import Cart from "../mixins/Cart";
-    export default {
+import {loadStripe} from '@stripe/stripe-js';
+// public key
+const stripePromise = loadStripe('pk_test_51IYAy4EMn5LU6PTL0lp2KxEvyqlaMoQ5ASLz8NrN7DZBRF3Foo4q86s2tIN1OXXT08rtL3hIZx1UPqZhYZKqpQ1400scdPmFdA');
+
+export default {
         mixins:[Cart],
         data: function() {
             return {
@@ -82,6 +87,29 @@ import Cart from "../mixins/Cart";
                 this.clearCart();
                 this.cartArray = this.getCart();
                 window.location.href = "http://localhost:8080/#/shop";
+            },
+            checkout: async function(){
+                const stripe = await stripePromise;
+                const response = await fetch('http://localhost:3080/api/v1/create-checkout-session', {
+                    method:"POST",
+                    headers : {
+                    "Content-type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        amount:30000
+                    })
+                });
+                console.log(response);
+                const session = await response.json()
+                console.log(session);
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id,
+                });
+
+                if (result.error) {
+                    console.log(result.error)
+                }
+                
             }
         }
     }

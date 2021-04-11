@@ -9,7 +9,9 @@
             <router-link class="nav__link" to="/about">About</router-link>
             <router-link class="nav__link" to="/contact">Contact</router-link>
             <router-link class="nav__link" to="/account">Account</router-link>
-            <router-link class="nav__link" to="/login">Login</router-link>
+            <!-- <router-link v-if="isLogged" class="nav__link"  to="#" @click="logout">Logout</router-link> -->
+            <button v-if="isLogged" class="nav__link" @click="logout">Logout</button>
+            <router-link v-else class="nav__link" to="/login">Login</router-link>
             <router-link class="nav__link" to="/cart">
                 <i class="fas fa-shopping-cart icon__color"></i>
             </router-link>
@@ -18,8 +20,37 @@
 </template>
 
 <script>
+    import VueJwtDecode from "vue-jwt-decode";
     export default {
-       
+        data: function() {
+            return {
+                isLogged:false
+            }
+        },
+        methods: {
+            logout: function() {
+                localStorage.removeItem('token');
+                this.isLogged = false;
+            }
+        },
+        created() {
+            const token = localStorage.getItem('token');
+            if(token) {
+               const decodedToken = VueJwtDecode.decode(token);
+               fetch(`http://localhost:3080/api/v1/users/${decodedToken.id}`, {
+                   headers: {
+                       Authorization: token
+                   }
+               })
+               .then(res => res.json())
+               .then(data=>{
+                //    console.log(data)
+                   this.isLogged = true;
+                   console.log("isLogged",  this.isLogged)
+               })
+               .catch(err => console.log(err))
+            }
+        }
     }
 </script>
 
@@ -65,5 +96,4 @@
             }
         }   
     }
-
 </style>

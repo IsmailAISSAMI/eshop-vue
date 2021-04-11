@@ -59,6 +59,7 @@
                             let token = data.token;
                             localStorage.setItem('token',token);
                             this.$router.push('/account');
+                            window.location.reload();
                         }
                     }
                 )
