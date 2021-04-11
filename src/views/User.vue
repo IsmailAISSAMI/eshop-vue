@@ -27,7 +27,7 @@
 import VueJwtDecode from "vue-jwt-decode";
 import TitlePage from "../components/TitlePage";
 import Alert from "../components/Alert";
-import AdminDashboard from '../layout/user/AdminDashboard.vue';
+import AdminDashboard from './AdminVues/AdminDashboard';
 
 
     export default {

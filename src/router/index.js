@@ -5,13 +5,16 @@ import VueRouter from 'vue-router';
 import Contact from '../views/Contact.vue';
 import Policy from "../views/Policy.vue";
 // DYNAMIC PAGES
+import Login from "../views/Login.vue";
 import Home from '../views/Home.vue';
 import Shop from '../views/Shop.vue';
 import User from '../views/User.vue';
 import Product from "../views/Product.vue";
 import Cart from "../views/Cart.vue";
+// ADMIN
+import AdminDisplayUsers from "../views/AdminVues/getUsers.admin.vue";
 
-import Login from "../views/Login.vue";
+
 
 
 Vue.use(VueRouter)
@@ -61,6 +64,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/Admin/users/all',
+    name: 'AdminDisplayUsers',
+    component: AdminDisplayUsers
   }
 ]
 

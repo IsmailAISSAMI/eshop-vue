@@ -1,6 +1,5 @@
 <template>
-    <div class="user__lambda__main">
-        <div class="wrapper user__lambda__sidbar">
+    <div class="wrapper user__lambda__sidbar">
              <ul class="list-unstyled components">
                 <p>
                     Welcome {{user.firstName}}
@@ -13,10 +12,10 @@
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">
+                            <router-link class="nav__link" to="/admin/users/all">
                                 <i class="fas fa-angle-double-right"></i>
                                 List
-                            </a>
+                            </router-link>
                         </li>
                         <li>
                             <a href="#">
@@ -85,24 +84,10 @@
                 </li>
             </ul>
         </div>
-        <div class="user__lambda__content">
-            <Alert className="alert__success" errorMessage="I am an admin!!"/>
-        </div>
-        <!-- <div class="user__info">
-                <p>Nom :{{user.firstName}}</p>
-                <p>Prénom :{{user.lastName}}</p>
-                <p>Email :{{user.email}}</p>
-                <button @click="logout">Se déconnecter</button>
-        </div> -->
-    </div>
 </template>
 
 <script>
-    import Alert from "../../components/Alert";
     export default {
-        components: {
-            Alert
-        },
         props: {
             user: Object
         },
@@ -118,10 +103,7 @@
     $background-main-color:#2f3f53;
     $secondary-color: #475e7a;
     $link-color: #fff;
-    .user__lambda__main{
-        width: 100vw;        
-        display: flex;
-        flex-direction: row;
+
         .user__lambda__sidbar{
             background-color: $background-main-color;
             padding: 0 20px;
@@ -174,15 +156,4 @@
                 background: $secondary-color;
             }
         }
-
-        .user__lambda__content{
-            width: 98%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    
-    }
-
-
 </style>
