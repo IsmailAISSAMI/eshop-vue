@@ -1,12 +1,14 @@
 <template>
     <div>
-        <div v-if="loading">
-            <p>loading page</p>
+        <div v-if="loading" id="admin__spinner">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
         <div v-else>
             <div v-if="isLogged">
                 <div v-if="user.isAdmin">
-                    <UserLambda :user="user" />
+                    <AdminDashboard :user="user" />
                 </div>
                 <div v-else>
                     <Alert className="alert__danger" errorMessage="je suis pas admin!"/>
@@ -25,14 +27,14 @@
 import VueJwtDecode from "vue-jwt-decode";
 import TitlePage from "../components/TitlePage";
 import Alert from "../components/Alert";
-import UserLambda from '../layout/user/UserLambda.vue';
+import AdminDashboard from '../layout/user/AdminDashboard.vue';
 
 
     export default {
         components: {
             TitlePage,
             Alert,
-            UserLambda
+            AdminDashboard
         },
         data: function() {
             return {
@@ -69,5 +71,11 @@ import UserLambda from '../layout/user/UserLambda.vue';
 </script>
 
 <style lang="scss" scoped>
-
+    #admin__spinner{
+        height: 80vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

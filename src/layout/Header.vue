@@ -9,8 +9,7 @@
             <router-link class="nav__link" to="/about">About</router-link>
             <router-link class="nav__link" to="/contact">Contact</router-link>
             <router-link class="nav__link" to="/account">Account</router-link>
-            <!-- <router-link v-if="isLogged" class="nav__link"  to="#" @click="logout">Logout</router-link> -->
-            <button v-if="isLogged" class="nav__link" @click="logout">Logout</button>
+            <button v-if="isLogged" class="nav__link logout__link" @click="logout">Logout</button>
             <router-link v-else class="nav__link" to="/login">Login</router-link>
             <router-link class="nav__link" to="/cart">
                 <i class="fas fa-shopping-cart icon__color"></i>
@@ -31,6 +30,7 @@
             logout: function() {
                 localStorage.removeItem('token');
                 this.isLogged = false;
+                window.location.href = 'http://10.188.211.84:8080/#/login';
             }
         },
         created() {
@@ -85,6 +85,11 @@
                 text-decoration: none;
             }
 
+            .logout__link{
+                background-color:#131921;
+                border: none;
+            }
+
             .nav__link:hover {
                 border: 1px solid #fff;
                 border-radius: .25rem; 
@@ -94,6 +99,8 @@
                 color:#f0c14b !important;
                 font-size: 20px;
             }
+
+            
         }   
     }
 </style>
