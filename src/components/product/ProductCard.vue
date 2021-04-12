@@ -14,16 +14,22 @@
         <i class="fas fa-cart-plus"></i>
         Add to Cart
       </button>	
+      <button @click="() => addItemToWishlist(productObject)" class="add__to__cart__button">
+        <i class="fas fa-heart"></i>
+        Add to Wishlist
+      </button>
     </p>
   </div>
 </template>
 
 <script>
 import Cart from "../../mixins/Cart";	
+import Wishlist from "../../mixins/Wishlist";
+
 
 export default {
   name: "ProductCard",
-  mixins:[Cart],	
+  mixins:[Cart, Wishlist],	
   props: {
     productObject: Object,
   },
@@ -35,7 +41,10 @@ export default {
   methods:{	
     addItemToCart: function(product) {	
       this.addTocart(product)	
-    }	
+    },
+    addItemToWishlist: function(product) {	
+      this.addToWishlist(product)	
+    }
   }
 };
 </script>

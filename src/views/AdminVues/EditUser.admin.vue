@@ -123,7 +123,8 @@
                })
                .then(res => res.json())
                .then(data=>{
-                   console.log(data)
+                   console.log(data);
+                   window.location.href = 'http://10.188.211.84:8080/#/Admin/users/all';
                })
                .catch(err => console.log(err))
             }

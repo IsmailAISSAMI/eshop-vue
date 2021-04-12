@@ -11,6 +11,8 @@ import Shop from '../views/Shop.vue';
 import User from '../views/User.vue';
 import Product from "../views/Product.vue";
 import Cart from "../views/Cart.vue";
+import Wishlist from "../views/Wishlist.vue";
+
 // ADMIN
 import AdminDisplayUsers from "../views/AdminVues/getUsers.admin.vue";
 import AdminDisplayProducts from "../views/AdminVues/getProducts.admin.vue";
@@ -38,6 +40,11 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/wishlist',
+    name: 'Wishlist',
+    component: Wishlist
   },
   {
     path: '/shop',
