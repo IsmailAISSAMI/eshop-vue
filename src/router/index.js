@@ -14,9 +14,7 @@ import Cart from "../views/Cart.vue";
 // ADMIN
 import AdminDisplayUsers from "../views/AdminVues/getUsers.admin.vue";
 import AdminDisplayProducts from "../views/AdminVues/getProducts.admin.vue";
-
-
-
+import AdminEditUser from "../views/AdminVues/EditUser.admin.vue";
 
 Vue.use(VueRouter)
 
@@ -75,6 +73,11 @@ const routes = [
     path: '/Admin/products/all',
     name: 'AdminDisplayProducts',
     component: AdminDisplayProducts
+  },
+  {
+    path: "/Admin/users/edit/:id",
+    name: "AdminEditUser",
+    component: AdminEditUser
   }
 ]
 
