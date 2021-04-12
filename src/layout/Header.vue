@@ -11,6 +11,9 @@
             <router-link class="nav__link" to="/account">Account</router-link>
             <button v-if="isLogged" class="nav__link logout__link" @click="logout">Logout</button>
             <router-link v-else class="nav__link" to="/login">Login</router-link>
+            <router-link class="nav__link" to="/wishlist">
+                <i class="fas fa-heart icon__color"></i>
+            </router-link>
             <router-link class="nav__link" to="/cart">
                 <i class="fas fa-shopping-cart icon__color"></i>
             </router-link>

@@ -13,7 +13,7 @@
                     <td>{{item.title}}</td>
                     <td>{{ item.priceHT | formatPriceDecimal | formatPrice }}</td> 
                     <td>
-                        <button @click="removeProductCart(item)">Remove product</button>
+                        <button @click="removeProductWishlist(item)">Remove product</button>
                     </td>
                 </tr>
             </tbody>

@@ -15,12 +15,13 @@ export default {
             )
 
             if (indexOfExistingProduct !== -1) {
-                console.log("product exist already!")
+                console.log("product already exist in your wishlist!")
             }
             else {
-                cart.push(productObject)
+                wishlist.push(productObject)
             }
 
+            // wishlist.push(productObject)
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
         },
