@@ -45,10 +45,10 @@
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">
-                                <i class="fas fa-angle-double-right"></i>
+                            <router-link class="nav__link" to="/Admin/products/all">
+                               <i class="fas fa-angle-double-right"></i>
                                 List
-                            </a>
+                            </router-link>
                         </li>
                         <li>
                             <a href="#">

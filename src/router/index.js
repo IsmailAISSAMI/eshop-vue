@@ -13,6 +13,7 @@ import Product from "../views/Product.vue";
 import Cart from "../views/Cart.vue";
 // ADMIN
 import AdminDisplayUsers from "../views/AdminVues/getUsers.admin.vue";
+import AdminDisplayProducts from "../views/AdminVues/getProducts.admin.vue";
 
 
 
@@ -69,6 +70,11 @@ const routes = [
     path: '/Admin/users/all',
     name: 'AdminDisplayUsers',
     component: AdminDisplayUsers
+  },
+  {
+    path: '/Admin/products/all',
+    name: 'AdminDisplayProducts',
+    component: AdminDisplayProducts
   }
 ]
 

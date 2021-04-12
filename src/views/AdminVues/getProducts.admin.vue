@@ -9,22 +9,21 @@
         <div v-else>
             <div class="user__lambda__content">
 
-                <table class="table table-striped users__table">
+                <table class="table table-striped products__table">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <tr v-for="(account, index) in users" :key="account._id">
+                        <tr v-for="(product, index) in products" :key="product._id">
                             <th scope="row">{{index}}</th>
-                            <td>{{account.firstName}}</td>
-                            <td>{{account.lastName}}</td>
-                            <td>{{account.email}}</td>
+                            <td>{{product.title}}</td>
+                            <td>{{product.category}}</td>
+                            <td>{{product.priceHT}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -46,7 +45,7 @@
         data: function() {
             return {
                 connectedUser:{},
-                users:[],
+                products:[],
                 isLoading: true
             }
         },
@@ -62,10 +61,8 @@
                .then(res => res.json())
                .then(data=>{
                    this.connectedUser = data.user;
-                   console.log("-------->data.user")
-                   console.log(data.user)
                    this.isLoading = false;
-                   return fetch(`http://localhost:3080/api/v1/users`, {
+                   return fetch(`http://localhost:3080/api/v1/products`, {
                         headers: {
                             Authorization: token
                         }
@@ -73,8 +70,7 @@
                })
                .then(res => res.json())
                .then(data=>{
-                   console.log(data)
-                   this.users = data;
+                   this.products = data;
                })
                .catch(err => console.log(err))
             }
@@ -105,7 +101,7 @@ $background-main-color:#2f3f53;
             justify-content: center;
             align-items: center;
 
-            .users__table{
+            .products__table{
                 width: 95%;
                 margin: 30px auto;
             }
