@@ -1,4 +1,7 @@
-# eshop_ynov
+# eshop ynov Project (FRONTEND)
+
+## By: Ismail AISSAMI
+
 
 ## Project setup
 ```
