@@ -18,8 +18,8 @@
             <div class="form-group">
                 <label htmlFor="adminLabel">Is Admin?</label>
                 <select v-model="isAdmin" name="isAdmin" class="form-control form-control">
-                    <option>True</option>
-                    <option>False</option>
+                    <option value=true>True</option>
+                    <option value=false>false</option>
                 </select>
             </div>
 
@@ -43,19 +43,10 @@
                 <input type="text" name="street" v-model="street" placeholder="Street" class="form-control">
             </div>
 
-            <div class="form-group">
-                <label htmlFor="streetrLabel">Street</label>
-                <input type="text" name="street" v-model="street" placeholder="Street" class="form-control">
-            </div>
 
             <div class="form-group">
                 <label htmlFor="streetrLabel">City</label>
                 <input type="text" name="city" v-model="city" placeholder="City" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label htmlFor="countryLabel">Country</label>
-                <input type="text" name="country" v-model="country" placeholder="Country" class="form-control">
             </div>
 
             <div class="form-group">
@@ -76,18 +67,68 @@
 
 
 <script>
+    import VueJwtDecode from "vue-jwt-decode";
+
     export default {
         data: function() {
             return {
+                connectedUser:{},
                 email:"",
-                password:""
+                password:"",
+                isAdmin: false,
+                firstName: "",
+                lastName: "",
+                phoneNumber: ""
             }
         },
         methods: {
             editUser: function(e) {
 
+                const body = {
+                        email : this.email,
+                        password: this.password,
+                        isAdmin: this.isAdmin,
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        phoneNumber: this.phoneNumber,
+                        address:{
+                            street: this.street,
+                            city: this.city,
+                            country: this.country,
+                            zip: this.zip
+                        }
+                        
+                }
+                
+                const requestOptions = {
+                   method: "PATCH",
+                   headers: {
+                       "Content-Type":"application/json"
+                   },
+                   body : JSON.stringify(body)
+                }
+                 const token = localStorage.getItem('token');
+            if(token) {
+               const decodedToken = VueJwtDecode.decode(token);
+               fetch(`http://localhost:3080/api/v1/users/${decodedToken.id}`, {
+                   headers: {
+                       Authorization: token
+                   }
+               })
+               .then(res => res.json())
+               .then(data=>{
+                   this.connectedUser = data.user;
+                   console.log(this.$route.params.id)
+                   return fetch(`http://localhost:3080/api/v1/users/${this.$route.params.id}`, requestOptions)
+               })
+               .then(res => res.json())
+               .then(data=>{
+                   console.log(data)
+               })
+               .catch(err => console.log(err))
             }
         }
+    }
     }
 </script>
 

@@ -76,12 +76,6 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Link1</a>
-                </li>
-                <li>
-                    <a href="#">Link2</a>
-                </li>
             </ul>
         </div>
 </template>

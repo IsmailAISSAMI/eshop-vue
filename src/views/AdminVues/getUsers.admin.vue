@@ -16,6 +16,7 @@
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Email</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,12 @@
                             <td>{{account.firstName}}</td>
                             <td>{{account.lastName}}</td>
                             <td>{{account.email}}</td>
+                            <td>
+                                <router-link class="badge badge-dark" :to="{ name: 'AdminEditUser', params: { id: account._id }}">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    Update
+                                </router-link>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,8 +69,6 @@
                .then(res => res.json())
                .then(data=>{
                    this.connectedUser = data.user;
-                   console.log("-------->data.user")
-                   console.log(data.user)
                    this.isLoading = false;
                    return fetch(`http://localhost:3080/api/v1/users`, {
                         headers: {
